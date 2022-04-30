@@ -58,7 +58,7 @@ To reload Browser on save, @install [vscode-run-on-save](https://github.com/puce
             "match": ".*",
 
             // # Options
-            // "command": "...browser-reload.php    OptionsGoesHere",
+            // "command": "...browser-reload.php    Options=GoesHere",
 
             // output=false                         // [false | minimal]   :: default true
             // set_timeout=0.1                      // > 0                 :: default 0.1
