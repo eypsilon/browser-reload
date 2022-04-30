@@ -1,4 +1,4 @@
-#!/usr/bin/env php
+#!/usr/bin/php
 <?php declare(strict_types=1); \error_reporting(E_ALL);
 
 /**
@@ -8,11 +8,11 @@
 /**
  * @var array Config */
 $config = \array_merge([
-    'set_timeout'  => 0.5,                                     // > 0 (pause between reloads, if multiple windows)
-    'trigger_key'  => 'ctrl+r',                                // F5 | ctrl+r
+    'output'       => true,                                    // [false | 'minimal' | true]
+    'set_timeout'  => 0.2,                                     // > 0 (pause between reloads, if multiple windows)
+    'trigger_key'  => 'ctrl+r',                                // ['F5' | 'ctrl+r']
     'srch_title'   => 'local-dev-many-title',                  // identifier
     'srch_browser' => ['Navigator', 'Google-chrome', 'Opera'], // Navigator = Firefox
-    'output'       => true,                                    // output [false | minimal | true]
 ], $argv);
 
 
@@ -48,13 +48,13 @@ class XdoTool
     }
 
     /**
-     * Search windows in classnames
+     * Search classnames in windows
      *
      * @param array $arr search array
-     * @param array $r temp var
+     * @param array temp var
      * @return array
      */
-    private function windows(array $arr, $r=[]): array
+    private function windows(array $arr, array $r=[]): array
     {
         foreach($arr as $b)
             $r[] = $this->xtool("search --classname {$b}");
@@ -65,7 +65,7 @@ class XdoTool
      * Run
      *
      * @param array $conf
-     * @param array $r temp var
+     * @param array temp var
      * @return array
      */
     function run(array $conf, array $r=[]): array
@@ -78,7 +78,7 @@ class XdoTool
             $backTo = $this->xtool('getwindowfocus');
             foreach($searchWindows as $id) {
                 $wn = $this->xtool("getwindowname $id");
-                if (\str_contains($wn, $conf['srch_title'])) {
+                if ($wn AND \str_contains($wn, $conf['srch_title'])) {
                     $this->xtool("windowactivate {$id}; sleep {$conf['set_timeout']}");
                     $this->xtool("key --clearmodifiers --window {$id} {$conf['trigger_key']}");
                     $r['windows'][$id] = \str_replace(" {$conf['srch_title']}", '', $wn);
@@ -96,7 +96,6 @@ class XdoTool
     }
 
 }
-
 
 /**
  * @var array run */

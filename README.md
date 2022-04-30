@@ -3,7 +3,8 @@
 `Ubuntu 21.10 | Apache/2.4.48 | PHP 8.0.18`
 
 Reloads windows regardless of which Browser are in them and without the need of any additional Browser-extensions for any Browser.
-Currently it works with Firefox, Chrome & Opera (but it should work for all Browsers). It doesn't even needs a URL or IP to work, but a identifier in the Title `<title></title>` of the Page.
+
+Currently it works with Firefox, Chrome & Opera (but it should work for all Browsers). It doesn't even needs a URL or IP to work, but a identifier in the Title `<title></title>` of the Page. And it also doesn't use any observer or services in order to work, it runs, when it's requested.
 
 @install [xdotool - window management](https://www.semicomplete.com/projects/xdotool/)
 
@@ -13,7 +14,7 @@ Currently it works with Firefox, Chrome & Opera (but it should work for all Brow
 
 ---
 
-Download `browser-reload.php` to wherever you like and make it executable on your System
+Download `browser-reload.php` to wherever you like and make it executable
 
 ```sh
 ~$ chmod +x ~/bin/browser-reload/browser-reload.php
@@ -21,20 +22,20 @@ Download `browser-reload.php` to wherever you like and make it executable on you
 
 Set an EnvVar on your local Server and pass it to Env
 
-```apache
+```sh
 ~$ sudo gedit /etc/apache2/envvars
 
 export LOCAL_MACHINE_TITLE=" local-dev-many-title"
 ```
 
-```apache
+```sh
 ~$ sudo gedit /etc/apache2/apache2.conf
 
 PassEnv LOCAL_MACHINE_TITLE
 ```
 ---
 
-To make a Page (window) auto reloadable, put the EnvVar in every Page Title where it's desired. This script searches in windownames of open windows to check if they contain the specified EnvVar. If a Window matches the criteria, the key defined in `$config['trigger_key']` will get fired ("F5" | "ctrl+r").
+To make a Page (window) auto reloadable, just put the EnvVar in it's Title (or the value itself). This script searches in windownames of open windows to check if they contain the specified EnvVar. If a Window matches the criteria, the key defined in `$config['trigger_key']` will get fired ("F5" | "ctrl+r").
 
 Multiple windows with multiple Browsers at the same time are working as well - the Pages have to be active in the Windows they're in (visible, top tab), and that's it.
 
@@ -60,7 +61,7 @@ To reload Browser on save, @install [vscode-run-on-save](https://github.com/puce
             // # Options
             // "command": "...browser-reload.php    Options=GoesHere",
 
-            // output=false                         // [false | minimal]   :: default true
+            // output=false                         // [false | 'minimal'] :: default true
             // set_timeout=0.1                      // > 0                 :: default 0.1
             // trigger_key='ctrl%2Br'               // ['F5' | 'ctrl%2Br'] :: default 'ctrl+r'
             // srch_title='local-dev-many-title'    // (string)            :: default 'local-dev-many-title'
@@ -84,6 +85,13 @@ To reload Browser on save, @install [vscode-run-on-save](https://github.com/puce
     ]
 }
 ```
+Enable / Disable via cmd `ctrl+shift+p`
+
+```cmd
+Run On Save: Enable
+Run On Save: Disable
+```
+
 ---
 
 Add Aliases (optional)
