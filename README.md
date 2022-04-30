@@ -34,7 +34,7 @@ PassEnv LOCAL_MACHINE_TITLE
 ```
 ---
 
-To make a Page (window) auto reloadable, put the EnvVar in every Page Title where it's desired. This script searches in windownames of open windows to check if they contain the specified EnvVar. If a Window matches the criteria, the key defined in `$xdoConfig['trigger_key']` will get fired ("F5" | "ctrl+r").
+To make a Page (window) auto reloadable, put the EnvVar in every Page Title where it's desired. This script searches in windownames of open windows to check if they contain the specified EnvVar. If a Window matches the criteria, the key defined in `$config['trigger_key']` will get fired ("F5" | "ctrl+r").
 
 Multiple windows with multiple Browsers at the same time are working as well - the Pages have to be active in the Windows they're in (visible, top tab), and that's it.
 

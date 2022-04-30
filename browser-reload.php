@@ -8,7 +8,7 @@
 /**
  * @var array Config */
 $config = \array_merge([
-    'set_timeout'  => 0.1,                                     // > 0 (pause between reloads, if multiple windows)
+    'set_timeout'  => 0.5,                                     // > 0 (pause between reloads, if multiple windows)
     'trigger_key'  => 'ctrl+r',                                // F5 | ctrl+r
     'srch_title'   => 'local-dev-many-title',                  // identifier
     'srch_browser' => ['Navigator', 'Google-chrome', 'Opera'], // Navigator = Firefox
