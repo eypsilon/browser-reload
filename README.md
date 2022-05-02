@@ -67,6 +67,8 @@ To reload Browser on save, @install [vscode-run-on-save](https://github.com/puce
             // srch_title='local-dev-many-title'    // (string)            :: default 'local-dev-many-title'
 
             // # set custom Browser names to search for
+            // # to get the Name of a window, run "xprop | grep WM_CLASS" 
+            // # and click the window of interest
             // srch_browser[]=Navigator
             // srch_browser[]=Google-chrome
             // srch_browser[]=Opera
