@@ -42,6 +42,9 @@ sudo gedit /etc/apache2/apache2.conf
 # put
 PassEnv LOCAL_MACHINE_TITLE
 ```
+
+See `config.php.example` to set custom default configs and handle error occurrences.
+
 ---
 
 To now make a Page (window) auto reloadable, just put the EnvVar in it's Title (or the value itself). This script searches in windownames of open windows to check if they contain the specified EnvVar. If a Window matches the criteria, the key defined in `$config['trigger_key']` will get fired ("F5" | "ctrl+r").
@@ -82,6 +85,13 @@ To reload Browser on save, @install [vscode-run-on-save](https://github.com/puce
             // srch_browser[]=Google-chrome
             // srch_browser[]=Opera
 
+            // # Additional titles to search for, on error for example
+            // # see config.php.example for more infos
+            // match_title[]='Mozilla Firefox'
+
+            // # Add regexe, see config.php.example for more infos
+            // regex_title[]='~localhost.loc~'
+
             // # the file, that has triggered the reload
             // filename=${fileBasename}
             // extension=${fileExtname}
@@ -96,6 +106,7 @@ To reload Browser on save, @install [vscode-run-on-save](https://github.com/puce
     ]
 }
 ```
+
 Enable / Disable via cmd `ctrl+shift+p`
 
 ```cmd
@@ -103,11 +114,23 @@ Run On Save: Enable
 Run On Save: Disable
 ```
 
-Output: `ctrl+k + ctrl+h` > Output > "Run on Save"
+Check response output: `ctrl+k + ctrl+h` > Output > "Run on Save"
 
 ---
 
-Add Aliases (optional)
+### Custom Config
+
+Use custom configs to overwrite default configs. Set a list of strings to handle errors on your Page.
+
+---
+
+#### Regular Expressions
+
+Set regular expressions to handle error pages. See 'config.php.example' for more infos.
+
+---
+
+##### Add Aliases (optional)
 
 ```sh
 ~$ sudo gedit ~/.bash_aliases
@@ -121,5 +144,5 @@ alias BrowserReloadQuiet='~/bin/browser-reload/browser-reload.php output=false'
 with Aliases in place, we can reload open windows from the terminal with
 
 ```js
-~$ BrowserReload
+BrowserReload
 ```

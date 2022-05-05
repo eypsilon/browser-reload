@@ -1,0 +1,48 @@
+<?php
+// remove ".example" from filename to activate and
+// overwrite default configs
+return [
+
+    // [false | 'minimal' | true]
+    'output'       => true,
+
+    // > 0 (pause between reloads, if multiple windows)
+    'set_timeout'  => 0.1,
+
+    // ['F5' | 'ctrl+r']
+    'trigger_key'  => 'ctrl+r',
+
+    // defalt identifier
+    'srch_title'   => 'local-dev-many-title',
+
+    // Navigator = Firefox
+    'srch_browser' => ['Navigator', 'Google-chrome', 'Opera'],
+
+    // if an error occures, for example an php error, the title identifier
+    // can't be found because of the error. Since different Browsers do different
+    // stuff on errors, you can define a list of Strings, that will be checked.
+    // Firefox for Example just displays "Mozilla Firefox", so we can reload
+    // windows, that have a title equal to "Mozilla Firefox". Chrome on the other hand displays also the
+    // url of the page, where the error has occured. For example "https://localhost/?params=too - Google Chrome".
+    //
+    // one caveat is, that all windows with the given Strings will be reloaded.
+    'match_title' => [
+        'Mozilla Firefox', # title matches
+    ],
+
+    // set regular expressions to search for in titles. Useful for Chrome, where you can set hostnames for the
+    // vhosts on your local machine, for example, given an error on
+    //
+    // 'http://lohalhost.loc/?with=params&more=data'
+    //
+    // Chrome would display
+    // 'lohalhost.loc/?with=params&more=data - Google Chrome'
+    //
+    // so a regex with
+    // '~localhost.loc~'
+    // will trigger a reload for the vhost 'localhost.loc', even if errors occures.
+    'regex_title' => [
+        // '~localhost.loc~' # title contains
+    ],
+
+];
