@@ -1,22 +1,25 @@
 <?php
 // remove ".example" from filename to activate and
-// overwrite default configs
+// overwrite default configs. Will be ignored on Updates.
 return [
 
     // [false | 'minimal' | true]
-    'output'       => true,
+    'output' => true,
 
-    // > 0 (pause between reloads, if multiple windows)
-    'set_timeout'  => 0.1,
+    // > 0 (pause between reloads)
+    'set_timeout' => 0.1,
 
     // ['F5' | 'ctrl+r']
-    'trigger_key'  => 'ctrl+r',
+    'trigger_key' => 'ctrl+r',
 
     // defalt identifier
-    'srch_title'   => 'local-dev-many-title',
+    'srch_title' => 'local-dev-many-title',
 
-    // Navigator = Firefox
-    'srch_browser' => ['Navigator', 'Google-chrome', 'Opera'],
+    // Navigator = Firefox. To get the Name of a window, run
+    // "xprop | grep WM_CLASS" and click the window of interest.
+    'srch_browser' => [
+        'Navigator', 'Google-chrome', 'Opera'
+    ],
 
     // if an error occures, for example an php error, the title identifier
     // can't be found because of the error. Since different Browsers do different
@@ -33,10 +36,10 @@ return [
     // set regular expressions to search for in titles. Useful for Chrome, where you can set hostnames for the
     // vhosts on your local machine, for example, given an error on
     //
-    // 'http://lohalhost.loc/?with=params&more=data'
+    // 'http://localhost.loc/?with=params&more=data'
     //
     // Chrome would display
-    // 'lohalhost.loc/?with=params&more=data - Google Chrome'
+    // 'localhost.loc/?with=params&more=data - Google Chrome'
     //
     // so a regex with
     // '~localhost.loc~'
