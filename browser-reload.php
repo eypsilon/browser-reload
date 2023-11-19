@@ -14,7 +14,7 @@ $usrConfig = \is_file($gc = __DIR__ . '/config.php') ? include_once $gc : [];
 $config = \array_merge([
     'output'       => true,                                    // [false | 'minimal' | true]
     'set_timeout'  => 0.1,                                     // > 0 (pause between reloads, if multiple windows)
-    'trigger_key'  => 'ctrl+r',                                // ['F5' | 'ctrl+r']
+    'trigger_key'  => 'F5',                                    // ['F5' | 'ctrl+r'] # "ctrl+r" can cause issues in VSCode (repeating "r" in editor)
     'srch_title'   => 'local-dev-many-title',                  // identifier
     'srch_browser' => ['Navigator', 'Google-chrome', 'Opera'], // Navigator = Firefox
     'match_title'  => [],                                      // see config.php.example for custom settings

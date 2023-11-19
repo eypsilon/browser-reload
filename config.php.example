@@ -10,7 +10,7 @@ return [
     'set_timeout' => 0.1,
 
     // ['F5' | 'ctrl+r']
-    'trigger_key' => 'ctrl+r',
+    'trigger_key' => 'F5',
 
     // defalt identifier
     'srch_title' => 'local-dev-many-title',
@@ -18,7 +18,7 @@ return [
     // Navigator = Firefox. To get the Name of a window, run
     // "xprop | grep WM_CLASS" and click the window of interest.
     'srch_browser' => [
-        'Navigator', 'Google-chrome', 'Opera'
+        'Navigator', 'Google-chrome', 'Opera', 'Brave'
     ],
 
     // if an error occures, for example an php error, the title identifier

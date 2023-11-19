@@ -4,7 +4,7 @@
 
 This package can reload windows regardless of which Browser are in them and without the need of any additional Browser-extensions for any Browser.
 
-Currently it works with Firefox, Chrome & Opera (but it should work with all Browsers). It doesn't even needs a URL or IP to work, but a identifier in the Title `<title></title>` of the Page. And it also doesn't use an observer or services in order to work, it runs, when it's requested.
+Currently it works with Firefox, Chrome, Brave & Opera (but it should work with all Browsers). It doesn't even needs a URL or IP to work, but a identifier in the Title `<title></title>` of the Page. And it also doesn't use an observer or services in order to work, it runs, when it's requested.
 
 @install [xdotool - window management](https://www.semicomplete.com/projects/xdotool/)
 
